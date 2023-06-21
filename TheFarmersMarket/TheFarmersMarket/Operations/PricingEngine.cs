@@ -9,7 +9,7 @@ using TheFarmersMarket.Operations.Contracts;
 
 namespace TheFarmersMarket
 {
-    internal class PricingEngine : IPricingEngine
+    public class PricingEngine : IPricingEngine
     {
         public PricingEngine()
         {

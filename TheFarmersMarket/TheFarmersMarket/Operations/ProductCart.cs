@@ -8,12 +8,13 @@ using TheFarmersMarket.Operations.Contracts;
 
 namespace TheFarmersMarket
 {
-    internal class ProductCart : IProductCart
+    public class ProductCart : IProductCart
     {
         private IPricingEngine _pricingEngine;
         private List<Product> _products;
         private List<Offer> _offers;
         private List<ProductOffer> _cart;
+        private List<ProductOffer> _checkoutCart;
 
         public ProductCart()
         {
@@ -23,7 +24,7 @@ namespace TheFarmersMarket
             InitializeProducts();
             InitializeOffers();
         }
-       
+
         private void InitializeProducts()
         {
             _products = new List<Product>();
@@ -48,23 +49,31 @@ namespace TheFarmersMarket
             if (productCode != null && _products.Any(x => x.ProductCode.ToString() == productCode))
             {
                 var product = _products.First(x => x.ProductCode.ToString() == productCode);
-                _cart.Add(new ProductOffer { ProductCode = product.ProductCode, Price = product.Price});
+                _cart.Add(new ProductOffer { ProductCode = product.ProductCode, Price = product.Price });
             }
-                
+
             else
                 throw new Exception("Invalid Product");
         }
-
-        public void DisplayProduct()
+        public List<ProductOffer> GetCurrentCart()
         {
-            var finalCart = _pricingEngine.ApplyOffer(_cart);
+            return _cart;
+        }
 
-            foreach(var item in finalCart)
+        public List<ProductOffer> CheckOut()
+        {
+            _checkoutCart = _pricingEngine.ApplyOffer(_cart);
+            return _checkoutCart;
+        }
+
+        public void DisplayCheckoutCart()
+        {
+            foreach (var item in _checkoutCart)
             {
                 Console.Write($"{item.ProductCode}    {item.OfferCode}    {item.Price}");
                 Console.WriteLine();
             }
-            Console.WriteLine($"Total        {finalCart.Sum(x => x.Price)}");
+            Console.WriteLine($"Total       {_checkoutCart.Sum(x => x.Price)}");
         }
     }
 }

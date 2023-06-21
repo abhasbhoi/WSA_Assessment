@@ -7,7 +7,7 @@ using TheFarmersMarket.Models;
 
 namespace TheFarmersMarket.Operations.Contracts
 {
-    internal interface IPricingEngine
+    public interface IPricingEngine
     {
         List<ProductOffer> ApplyOffer(List<ProductOffer> product);
     }

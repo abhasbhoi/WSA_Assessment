@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheFarmersMarket.Models;
 
 namespace TheFarmersMarket.Operations.Contracts
 {
-    internal interface IProductCart
+    public interface IProductCart
     {
         void AddProductToCart(string productCode);
-        void DisplayProduct();
+        List<ProductOffer> GetCurrentCart();
+        List<ProductOffer> CheckOut();
+        void DisplayCheckoutCart();
     }
 }
