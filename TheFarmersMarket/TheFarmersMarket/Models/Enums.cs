@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheFarmersMarket.Models
 {
-    internal enum ProductCode
+    public enum ProductCode
     {
         CH1,
         AP1,
@@ -15,7 +15,7 @@ namespace TheFarmersMarket.Models
         OM1
     }
 
-    internal enum ProductName
+    public enum ProductName
     {
         Chai,
         Apples,
@@ -24,7 +24,7 @@ namespace TheFarmersMarket.Models
         Oatmilk
     }
 
-    internal enum OfferCode
+    public enum OfferCode
     {
         BOGO,
         APPL,

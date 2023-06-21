@@ -1,11 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using TheFarmersMarket;
+using TheFarmersMarket.Operations.Contracts;
 
-ProductCart productCart = new ProductCart();
+IProductCart productCart = new ProductCart();
 productCart.AddProductToCart("CH1");
 productCart.AddProductToCart("AP1");
 productCart.AddProductToCart("AP1");
 productCart.AddProductToCart("AP1");
 productCart.AddProductToCart("MK1");
 
-productCart.DisplayProduct();
+var checkoutCart = productCart.CheckOut();
+productCart.DisplayCheckoutCart();

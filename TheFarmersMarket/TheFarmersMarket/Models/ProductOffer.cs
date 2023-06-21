@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheFarmersMarket.Models
 {
-    internal class ProductOffer
+    public class ProductOffer
     {
         public ProductCode? ProductCode { get; set; }
         public OfferCode? OfferCode { get; set; }
